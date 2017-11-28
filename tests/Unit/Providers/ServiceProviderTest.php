@@ -4,28 +4,30 @@ namespace Tests\Unit\Providers;
 
 use Tests\TestCase;
 use Mockery as m;
-use Cart;
+use Postcode;
 
 class ServiceProviderTest extends TestCase
 {
-    public function testSetupCart()
+    public function testSetup()
     {
-        $cart = $this->app->make('Matthewbdaly\LaravelCart\Contracts\Services\Cart');
-        $this->assertInstanceOf(\Matthewbdaly\LaravelCart\Services\Cart::class, $cart);
-    }
-
-    public function testSetupUniqueId()
-    {
-        $cart = $this->app->make('Matthewbdaly\LaravelCart\Contracts\Services\UniqueId');
-        $this->assertInstanceOf(\Matthewbdaly\LaravelCart\Services\UniqueId::class, $cart);
+        $this->app['config']->set('postcode.api_key', 'foo');
+        $client = $this->app->make('Matthewbdaly\Postcode\Contracts\Client');
+        $this->assertInstanceOf(\Matthewbdaly\Postcode\Client::class, $client);
     }
 
     public function testFacade()
     {
-        $mock = m::mock('Matthewbdaly\LaravelCart\Contracts\Services\Cart');
-        $mock->shouldReceive('destroy')->once();
-        $this->app->instance('Matthewbdaly\LaravelCart\Contracts\Services\Cart', $mock);
-        $this->assertInstanceOf('Matthewbdaly\LaravelCart\Contracts\Services\Cart', $this->app['Matthewbdaly\LaravelCart\Contracts\Services\Cart']);
-        Cart::destroy();
+        $this->app['config']->set('postcode.api_key', 'foo');
+        $mock = m::mock('Matthewbdaly\Postcode\Contracts\Client');
+        $mock->shouldReceive('get')->with('ID1 1QD')->once()->andReturn(true);
+        $this->app->instance('Matthewbdaly\Postcode\Contracts\Client', $mock);
+        $this->assertTrue(Postcode::get('ID1 1QD'));
+    }
+
+    public function testInject()
+    {
+        $client = $this->app->make('Matthewbdaly\Postcode\Contracts\Client');
+        $this->assertInstanceOf('Matthewbdaly\Postcode\Contracts\Client', $client);
+        $this->assertInstanceOf('Matthewbdaly\Postcode\Client', $client);
     }
 }

@@ -8,7 +8,7 @@ class TestCase extends BaseTestCase
 {
 	protected function getPackageProviders($app)
 	{
-		return ['Matthewbdaly\LaravelPostcodes\Providers\PostcodesProvider'];
+		return ['Matthewbdaly\LaravelPostcodes\Providers\PostcodeServiceProvider'];
 	}
 
 	protected function getPackageAliases($app)
