@@ -5,7 +5,7 @@
     "keywords": ["postcode","laravel","lumen"],
     "require": {
         "php-http/guzzle6-adapter": "^1.1",
-        "php-http/client-implementation": "^1.0"
+        "matthewbdaly/postcode-client": "^0.0.3"
     },
     "require-dev": {
         "orchestra/testbench": "3.5",
