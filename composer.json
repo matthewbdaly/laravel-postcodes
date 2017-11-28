@@ -1,0 +1,40 @@
+{
+    "name": "matthewbdaly/laravel-postcodes",
+    "description": "A Laravel and Lumen integration for matthewbdaly/postcode-client to enable postcode lookups with Ideal Postcodes",
+    "type": "library",
+    "keywords": ["postcode","laravel","lumen"],
+    "require-dev": {
+        "orchestra/testbench": "3.5",
+        "phpunit/phpunit": "^6.3",
+        "mockery/mockery": "^0.9.9",
+        "squizlabs/php_codesniffer": "^3.1",
+        "psy/psysh": "^0.8.11"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew Daly",
+            "email": "matthewbdaly@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Matthewbdaly\\LaravelPostcodes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Matthewbdaly\\LaravelPostcodes\\LaravelPostcodesProvider"
+            ],
+            "aliases": {
+                "Postcode": "Matthewbdaly\\LaravelPostcodes\\Facade"
+            }
+        }
+    }
+}
