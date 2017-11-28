@@ -3,6 +3,10 @@
     "description": "A Laravel and Lumen integration for matthewbdaly/postcode-client to enable postcode lookups with Ideal Postcodes",
     "type": "library",
     "keywords": ["postcode","laravel","lumen"],
+    "require": {
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/client-implementation": "^1.0"
+    },
     "require-dev": {
         "orchestra/testbench": "3.5",
         "phpunit/phpunit": "^6.3",
