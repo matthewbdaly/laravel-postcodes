@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Matthewbdaly\\LaravelPostcodes\\LaravelPostcodesProvider"
+                "Matthewbdaly\\LaravelPostcodes\\Providers\\PostcodeServiceProvider"
             ],
             "aliases": {
                 "Postcode": "Matthewbdaly\\LaravelPostcodes\\Facade"
