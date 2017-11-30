@@ -5,6 +5,8 @@ Laravel Postcode lookup integration
 
 UK postcode lookup service provider for Laravel and Lumen. Uses [Postcode Client](https://github.com/matthewbdaly/postcode-client) to enable lookups using Ideal Postcodes.
 
+Note that this service provider caches lookups indefinitely, since they don't change too often, but you may want to clear the cache from time to time. To do this, flush the `postcodes` tag.
+
 Installation for Laravel
 ------------------------
 
