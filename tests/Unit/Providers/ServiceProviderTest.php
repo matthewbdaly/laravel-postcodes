@@ -12,7 +12,7 @@ class ServiceProviderTest extends TestCase
     {
         $this->app['config']->set('postcode.api_key', 'foo');
         $client = $this->app->make('Matthewbdaly\Postcode\Contracts\Client');
-        $this->assertInstanceOf(\Matthewbdaly\Postcode\Client::class, $client);
+        $this->assertInstanceOf(\Matthewbdaly\LaravelPostcodes\Decorators\Postcode::class, $client);
     }
 
     public function testFacade()
@@ -29,6 +29,6 @@ class ServiceProviderTest extends TestCase
         $this->app['config']->set('postcode.api_key', 'foo');
         $client = $this->app->make('Matthewbdaly\Postcode\Contracts\Client');
         $this->assertInstanceOf('Matthewbdaly\Postcode\Contracts\Client', $client);
-        $this->assertInstanceOf('Matthewbdaly\Postcode\Client', $client);
+        $this->assertInstanceOf(\Matthewbdaly\LaravelPostcodes\Decorators\Postcode::class, $client);
     }
 }
