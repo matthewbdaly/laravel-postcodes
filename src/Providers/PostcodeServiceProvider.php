@@ -32,8 +32,8 @@ class PostcodeServiceProvider extends ServiceProvider
     {
         $this->app->bind('Matthewbdaly\Postcode\Contracts\Client', function ($app) {
             $client = new Client;
-            $client->setKey($app['config']['postcode']['api_key']);
             $decorator = new Postcode($client, $this->app['cache.store']);
+            $decorator->setKey($app['config']['postcode']['api_key']);
             return $decorator;
         });
     }
